@@ -1,0 +1,47 @@
+---
+import Navigation from './Navigation.astro'
+import ThemeToggle from './ThemeToggle.astro'
+import Social from './Social.astro'
+---
+
+<header>
+  <div class="header-left">
+    <Social />
+  </div>
+
+  <div class="header-inner">
+    <nav>
+      <Navigation />
+    </nav>
+  </div>
+
+  <ThemeToggle />
+</header>
+
+<style>
+  header {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .header-left {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+
+}
+</style>

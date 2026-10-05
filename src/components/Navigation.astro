@@ -1,0 +1,41 @@
+---
+const currentPath = Astro.url.pathname;
+const isActive = (path: string) =>
+  currentPath === path || currentPath.startsWith(path + "/");
+---
+
+
+<a
+  href="/"
+  aria-current={isActive("/") ? "page" : undefined}
+>
+  Home
+</a>
+
+<a
+  href="/about"
+  aria-current={isActive("/about") ? "page" : undefined}
+>
+  About
+</a>
+
+<a
+  href="/projects"
+  aria-current={isActive("/projects") ? "page" : undefined}
+>
+  Projects
+</a>
+
+<a
+  href="/tags"
+  aria-current={isActive("/tags") ? "page" : undefined}
+>
+  Skills
+</a>
+
+<a
+  href="/tools"
+  aria-current={isActive("/tools") ? "page" : undefined}
+>
+  Tools
+</a>

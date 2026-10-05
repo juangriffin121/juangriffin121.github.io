@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+
+export async function getStaticPaths() {
+  const allProjects = Object.values(import.meta.glob('../projects/*.md', {eager: true}));
+
+  const uniqueTags = [...new Set(allProjects.map((p: any) => p.frontmatter.tags).flat())]; /* ... expands (like *array in python) new Set creates a set, Set(...) alone doesnt work*/ 
+
+  return uniqueTags.map((tag) => {
+    const filteredProjects = allProjects.filter((p: Any) => p.frontmatter.tags?.includes(tag));
+
+    return {    
+      params: {tag: tag},
+      props: {projects: filteredProjects},
+    }
+  }) 
+};
+
+const { tag } = Astro.params;
+const { projects } = Astro.props;
+
+// try to load a skill md if it exists
+const skillModules = import.meta.glob('./content/*.md', { eager: true });
+const skillDoc = skillModules[`./content/${tag}.md`];
+console.log(skillDoc)
+---
+
+<BaseLayout pageTitle={tag}>
+  {skillDoc ? (
+    <article class="prose">
+      <skillDoc.Content />
+    </article>
+  ) : (
+    <p class="muted">
+      Projects where I used <strong>{tag}</strong>.
+    </p>
+  )}
+
+  <div class="tagged-projects">
+    {projects.map((project: any) => (
+      <a href={project.url}>{project.frontmatter.title}</a>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .tagged-projects {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tagged-projects a {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background-color: transparent;
+  }
+
+  .tagged-projects a:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--fg);
+  }
+</style>

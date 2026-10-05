@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+const pageTitle = "Tools"
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <p> blah blah blah </p>
+
+  <h3 class="tool"><a href="https://obsidian.com">Obsidian<span class="external-link-icon" aria-hidden="true">↗</span></a></h3>
+  <p> blah blah blah </p>
+  <h3 class="tool"><a href="https://linuxmint.com">Linux<span class="external-link-icon" aria-hidden="true">↗</span></a></h3>
+  <p> blah blah blah </p>
+  <h3 class="tool"><a href="https://neovim.io/">Neovim<span class="external-link-icon" aria-hidden="true">↗</span></a></h3>
+  <p> blah blah blah </p>
+  <h3 class="tool"><a href="https://github.com/tmux/tmux/wiki">Tmux<span class="external-link-icon" aria-hidden="true">↗</span></a></h3>
+  <p> blah blah blah </p>
+  <h3 class="tool"><a href="https://i3wm.org/">i3wm <span class="external-link-icon" aria-hidden="true">↗</span></a></h3>
+  <p> blah blah blah </p>
+</BaseLayout>
+
+<style>
+
+  .tool a {
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.2s ease;
+  }
+
+  .tool a:hover {
+    color: var(--accent);
+    background-color: var(--bg);
+  }
+
+  .external-link-icon {
+    font-size: 1rem;
+    opacity: 0.6;
+  }
+</style>

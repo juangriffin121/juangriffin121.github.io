@@ -1,0 +1,79 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+
+const allProjects = Object.values(import.meta.glob('../projects/*.md', {eager: true}));
+const tags = [...new Set(allProjects.map((project: any) => project.frontmatter.tags).flat())]; /* ... expands (like *array in python) new Set creates a set, Set(...) alone doesnt work*/ 
+const tagModules = import.meta.glob('./content/*.md', { eager: true });
+const tagDocMap = Object.fromEntries(
+  tags.map((tag) => [
+    tag,
+    tagModules[`./content/${tag}.md`] ?? null,
+  ])
+);
+console.log(tagDocMap)
+---
+<BaseLayout pageTitle="My skills">
+  <div class="tags">
+    {tags.map((tag) => (
+      <article class="tag-card">
+        <h2>
+          <a href={`/tags/${tag}`}>{tag}</li>
+        </h2>
+
+        <p class="tag-description">
+          {tagDocMap[tag]?.frontmatter.description}
+        </p>
+      </article>
+    ))}
+  </ul>
+  <div class="projects">
+
+</BaseLayout>
+
+<style>
+  /* -----------------------
+     Projects list
+  ------------------------ */
+  .tags {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* -----------------------
+     Project card
+  ------------------------ */
+  .tag-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    transition:
+      background-color var(--transition),
+      border-color var(--transition);
+  }
+
+  .tag-card:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--fg);
+  }
+
+  /* -----------------------
+     Project title
+  ------------------------ */
+  .tag-card h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+  }
+
+  .tag-card h2 a {
+    display: inline-block;
+  }
+
+  /* -----------------------
+     Description
+  ------------------------ */
+  .tag-description {
+    margin: 0 0 0.75rem 0;
+    color: var(--muted);
+  }
+</style>

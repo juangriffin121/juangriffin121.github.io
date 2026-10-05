@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const pageTitle = "My projects"
+const allProjects = Object.values(import.meta.glob('./*.md', {eager: true}));
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <p>Heres where ill post my projects</p>
+  <div class="projects">
+    {allProjects.map((project: any) => (
+      <article class="project-card">
+        <h2>
+          <a href={project.url}>{project.frontmatter.title}</a>
+        </h2>
+
+        <p class="project-description">
+          {project.frontmatter.description}
+        </p>
+
+        <ul class="project-tags">
+          {project.frontmatter.tags.map((tag: string) => (
+            <li>
+              <a href={`/tags/${tag}`}>{tag}</a>
+            </li>
+          ))}
+        </ul>
+      </article>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  /* -----------------------
+     Projects list
+  ------------------------ */
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* -----------------------
+     Project card
+  ------------------------ */
+  .project-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+    transition:
+      background-color var(--transition),
+      border-color var(--transition);
+  }
+
+  .project-card:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--fg);
+  }
+
+  /* -----------------------
+     Project title
+  ------------------------ */
+  .project-card h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+  }
+
+  .project-card h2 a {
+    display: inline-block;
+  }
+
+  /* -----------------------
+     Description
+  ------------------------ */
+  .project-description {
+    margin: 0 0 0.75rem 0;
+    color: var(--muted);
+  }
+
+  /* -----------------------
+     Tags
+  ------------------------ */
+  .project-tags {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  .project-tags a {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background-color: transparent;
+  }
+
+  .project-tags a:hover {
+    background-color: var(--bg);
+    border-color: var(--fg);
+  }
+</style>

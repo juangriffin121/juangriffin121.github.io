@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro"
+const { frontmatter } = Astro.props;
+---
+<BaseLayout pageTitle={frontmatter.title}>
+  <div class="project-tags">
+    {frontmatter.tags.map((tag) => (
+      <p><a href={`/tags/${tag}`}>{tag}</a></p>
+    ))}
+  </div>
+  <p>{frontmatter.description}</p>
+  <article class="prose">
+    <slot />
+  </article>
+</BaseLayout>
+
+<style>
+  .project-tags {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  .project-tags a {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background-color: transparent;
+  }
+
+  .project-tags a:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--fg);
+  }
+</style>
