@@ -1,32 +1,25 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro"
+import { slugifyTag } from "../../utils/tags"
 
 const allProjects = Object.values(import.meta.glob('../projects/*.md', {eager: true}));
 const tags = [...new Set(allProjects.map((project: any) => project.frontmatter.tags).flat())]; /* ... expands (like *array in python) new Set creates a set, Set(...) alone doesnt work*/ 
 const tagModules = import.meta.glob('./content/*.md', { eager: true });
-const tagDocMap = Object.fromEntries(
-  tags.map((tag) => [
-    tag,
-    tagModules[`./content/${tag}.md`] ?? null,
-  ])
-);
-console.log(tagDocMap)
 ---
-<BaseLayout pageTitle="My skills">
+<BaseLayout pageTitle="Skills">
   <div class="tags">
     {tags.map((tag) => (
       <article class="tag-card">
         <h2>
-          <a href={`/tags/${tag}`}>{tag}</li>
+          <a href={`/tags/${slugifyTag(tag)}`}>{tag}</a>
         </h2>
 
         <p class="tag-description">
-          {tagDocMap[tag]?.frontmatter.description}
+          {tagModules[`./content/${tag}.md`]?.frontmatter.description ?? `Projects where I used ${tag}.`}
         </p>
       </article>
     ))}
-  </ul>
-  <div class="projects">
+  </div>
 
 </BaseLayout>
 

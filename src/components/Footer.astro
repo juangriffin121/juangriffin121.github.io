@@ -1,13 +1,9 @@
 ---
-const platform = "github"
-const username = "juangriffin121"
-import Social from "../components/Social.astro"
 ---
 <style>
   footer {
     border-top: 1px solid var(--border);
-    margin-bottom: 1.5rem;
-    flex-shrink: 0;
+    margin-top: 2rem;
   }
 
   .footer-inner {
@@ -16,11 +12,13 @@ import Social from "../components/Social.astro"
     padding: 1rem;
     display: flex;
     justify-content: center;
+    color: var(--muted);
+    font-size: 0.9rem;
   }
 </style>
 
 <footer>
   <div class="footer-inner">
-    <p>to be deleted</p>
+    <p>© {new Date().getFullYear()} Juan Griffin</p>
   </div>
 </footer>

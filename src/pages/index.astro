@@ -1,8 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-const pageTitle = "Home page"
+const pageTitle = "Juan Griffin"
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>subtitle</h2>
+  <p class="lead">Biotechnology graduate and self-taught machine learning and systems programmer.</p>
+  <p>I build things from first principles: neural networks, simulations, control systems, and developer tools.</p>
+  <p><a class="button-link" href="/projects">Explore my projects →</a></p>
 </BaseLayout>
+
+<style>
+  .lead { font-size: 1.5rem; color: var(--muted); }
+  .button-link { display: inline-block; border: 1px solid var(--border); border-radius: var(--radius); padding: 0.6rem 0.9rem; }
+  .button-link:hover { border-color: var(--fg); }
+</style>

@@ -4,11 +4,9 @@ title: 'Blobworld: Evolution simulator'
 description: 'Evolution simulation in Rust'
 tags: ["Rust", "Computational simulation"]
 ---
-# Blobworld: Evolution simulator 
-
 *A from-scratch artificial life simulation in Rust, where blobs hunt, flee, and evolve.*
 
-<video src="/evolution/evolution(seed12).mp4" controls width="100%">
+<video src="/evolution/evolution(seed12).mp4" controls preload="metadata" width="100%">
   Your browser does not support the video tag.
 </video>
 
@@ -206,14 +204,14 @@ To animate the results of the simulation, there's currently two systems:
 - Python based animation using matplotlib. With `dump_frames = true` the Rust simulation dumps all necesary data for graphing the current state into a binary file which is then read in the python script, this system is faster, but I havent implemented neuron plotting for it yet, which might increase animation time.
 
 <figure>
-    <video src="/evolution/evolution.mp4" controls width="100%">
+    <video src="/evolution/evolution.mp4" controls preload="metadata" width="100%">
       Your browser does not support the video tag.
     </video>
     <figcaption>Animation from the begining with population count graphs, animated with the Python system.</figcaption>
 </figure>
 
 <figure>
-    <video src="/evolution/blobs.mp4" controls width="100%">
+    <video src="/evolution/blobs.mp4" controls preload="metadata" width="100%">
       Your browser does not support the video tag.
     </video>
     <figcaption>Visual neurons plotted in the simulation, animated with the Rust system.</figcaption>
@@ -223,27 +221,27 @@ To find interesting seeds which can show signs of learning, i implemented a chea
 
 
 <figure>
-    <image src="/evolution/seed12.png" controls width="100%">
-    </image>
+    <img src="/evolution/seed12.png" alt="Blobworld run with seed 12" width="100%">
+
     <figcaption>Population counts and total energy per species for the simulation shown at the begining.</figcaption>
 </figure>
 
 
 <figure>
-    <image src="/evolution/seed2.png" controls width="100%">
-    </image>
+    <img src="/evolution/seed2.png" alt="Blobworld run with seed 2" width="100%">
+
     <figcaption>Population counts and total energy per species for another interesting run, multiple predator-prey cycles.</figcaption>
 </figure>
 
 
 <figure>
-    <image src="/evolution/all_runs.png" controls width="100%">
-    </image>
+    <img src="/evolution/all_runs.png" alt="Population across all Blobworld runs" width="100%">
+
     <figcaption>Accumulated graphs from 20 runs of the simulation from 20 different seeds.</figcaption>
 </figure>
 
 <figure>
-    <video src="/evolution/Chase.mp4" controls width="100%">
+    <video src="/evolution/Chase.mp4" controls preload="metadata" width="100%">
       Your browser does not support the video tag.
     </video>
     <figcaption>Instance of predator chasing a prey captured in the simulation at the begining, as soon as the predator catches the prey it reproduces, since after eating the prey it passes the energy threshold.</figcaption>

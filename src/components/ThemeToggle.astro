@@ -55,19 +55,19 @@
     background: transparent;
     border: none;
     border-radius: var(--radius);
-    color: var(--color-text-secondary);
+    color: var(--muted);
     cursor: pointer;
-    transition: color var(--transition-fast), background var(--transition-fast);
+    transition: color var(--transition), background-color var(--transition);
     flex-shrink: 0;
   }
 
   .theme-toggle:hover {
-    color: var(--color-text);
+    color: var(--fg);
     background: var(--hover-bg);
   }
 
   .theme-toggle:focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--accent);
     outline-offset: 2px;
   }
 
@@ -97,15 +97,15 @@
   };
 
   // Apply theme to document
-  const setTheme = (theme: 'light' | 'dark') => {
+  const setTheme = (theme: 'light' | 'dark', persist = false) => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    if (persist) localStorage.setItem('theme', theme);
   };
 
   // Toggle theme
   const toggleTheme = () => {
     const current = document.documentElement.getAttribute('data-theme');
-    setTheme(current === 'dark' ? 'light' : 'dark');
+    setTheme(current === 'dark' ? 'light' : 'dark', true);
   };
 
   // Use event delegation on document to handle clicks
@@ -120,7 +120,7 @@
   // Listen for system preference changes (only once)
   window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
     if (!localStorage.getItem('theme')) {
-      setTheme(e.matches ? 'light' : 'dark');
+    setTheme(e.matches ? 'light' : 'dark');
     }
   });
 

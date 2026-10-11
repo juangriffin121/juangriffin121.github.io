@@ -99,7 +99,7 @@ action set with `valid_choice`.
 
 The game loop (`Table.game`) deals the cards, runs the exchange, and then plays rounds until only one player still holds cards; that player is the **scum**. A round ends when everyone else passes on a play (the player who made it opens the next round) or when a player empties their hand. Finishing order sets next game's roles, including the rule that makes President genuinely unfair: the scum must give the president their two best cards (in my implementation jokers can't be taken), and the president hands back any two cards of their choosing, usually their weakest. The vice-president and vice-scum swap one card the same way. That asymmetry turns out to matter a lot (more on this in Results).
 
-### Strategy pattern, four layers deep
+### Strategy pattern, three layers deep
 
 `Table` is the god object in this project and a `Table` holds a list of `Player` objects
 `Player` is an abstract implementation and it can have multiple ways of choosing 
@@ -392,29 +392,29 @@ State and action features each pass through their own small encoder into a share
 
 I trained agents of all four `CardChooser` types: `LinearChooser`, `StateScorerChooser` (SSA), `ActorCriticChooser` (AC) and `MLPChooser` (MLP64, for its 64-neuron hidden layer). Every training table has four players: the agent against four `Smallest` bots. Rewards run from −2 to +2 and sum to zero at a table, so a player exactly as good as its opponents averages 0.
 
-To reduce noise I batch gradients over several games and train several agents of each type in parallel. At each checkpoint, every agent is frozen, its temperature is dropped to 0.01, and it plays 100 test games on the same fixed set of deals, so all agents face identical luck. The best agent is saved to an `.npz`, and the worst [N] agent(s) are replaced by a noisy clone of it.
+To reduce noise I batch gradients over several games and train several agents of each type in parallel. At each checkpoint, every agent is frozen, its temperature is dropped to 0.01, and it plays 100 test games on the same fixed set of deals, so all agents face identical luck. The best agent is saved to an `.npz`, and the worst agent is replaced by a noisy clone of it.
 
 Without the card exchange, all agent types plateau at an average reward of about +0.7, a clear edge over `Smallest`.
 
 <figure>
-    <image src="/president-rl/spaghetti_curves.png" width="100%">
-    </image>
+    <img src="/president-rl/spaghetti_curves.png" alt="Training curves" width="100%">
+
     <figcaption>Training curves and checkpoint tests for the four agent families without exchange</figcaption>
 </figure>
 
 With the exchange, they reach about +1.6. Agents first train without exchange, and the exchange is switched on afterwards, which makes it easier for them to learn the basics first.
 
 <figure>
-    <image src="/president-rl/spaghetti_curves_all_not_frozen.png"  width="100%">
-    </image>
+    <img src="/president-rl/spaghetti_curves_all_not_frozen.png" alt="Training curves without frozen agents" width="100%">
+
     <figcaption>Training curves and checkpoint tests for the four agent families with exchange</figcaption>
 </figure>
 
 The number +1.6 at which the agents plateau needs some care: the exchange is a positive feedback loop (presidents get the scum's best cards and tend to stay president), so part of the jump comes from the mechanic itself rather than learning how to play to that new mechanic. To separate the two, I also ran a baseline where agents are frozen once pretraining ends: 
 
 <figure>
-    <image src="/president-rl/spaghetti_curves_all_frozen.png"  width="100%">
-    </image>
+    <img src="/president-rl/spaghetti_curves_all_frozen.png" alt="Training curves with frozen agents" width="100%">
+
     <figcaption>Training curves and checkpoint tests for the four agent families with exchange, freezing after turning exchange on</figcaption>
 </figure>
 
@@ -461,7 +461,7 @@ To test the hypothesis I logged 30,000 games with the exchange mechanic, I did m
 The following is an animation of the first 1000 games of a run with `Linear` agents where I show the roles in each game. 
 
 <figure>
-    <video src="/president-rl/run5_Linear.animation.mp4" controls width="50%">
+    <video src="/president-rl/run5_Linear.animation.mp4" controls preload="metadata" width="50%">
       Your browser does not support the video tag.
     </video>
     <figcaption> 5 trained frozen linear agents playing against eachother, with the current president being marked as green, and scum as red 1000 game run</figcaption>
@@ -476,8 +476,8 @@ When we plot the mean performance of the players against their `seat_offset` and
 Its worth noting the absence of a mean performance value for `seat_offset` $=0$ and `current_role_value` $\neq 2$ since a `seat_offset` of 0 means the player is the president and a `current_role_value` different to 2 means its not the president.
 
 <figure>
-    <image src="/president-rl/Performance-Matrix.png" width="100%">
-    </image>
+    <img src="/president-rl/Performance-Matrix.png" alt="Performance matrix" width="100%">
+
     <figcaption>Mean performance plotted as a function of <code>seat_offset</code> and <code>current_role_value</code></figcaption>
 </figure>
 
@@ -503,8 +503,8 @@ For context: the president stays president 43% of the time, so the other four se
 To see the distribution of winners of games depending on the `seat_offset`, I plot a bar-chart of the results.
 
 <figure>
-    <image src="/president-rl/Presidents.png" width="100%">
-    </image>
+    <img src="/president-rl/Presidents.png" alt="President role frequency" width="100%">
+
     <figcaption>  Presidents (game winners) bar chart function of <code>seat_offset</code></figcaption>
 </figure>
 
@@ -513,26 +513,26 @@ As expected `seat_offset` $=0$ ie the current president, is vastly overrepresent
 We also plot the distribution of game losers.
 
 <figure>
-    <image src="/president-rl/Scums.png"  width="100%">
-    </image>
+    <img src="/president-rl/Scums.png" alt="Scum role frequency" width="100%">
+
     <figcaption>  Scums (game losers) bar chart function of <code>seat_offset</code></figcaption>
 </figure>
 
-As expected `seat_offset` $=0$ ie the current president, is vastly underrepresented in the game losers, but `seat_offset` $=1$ is also lower than the rest and `seat_offset` $=5-1$ ie the left-hand of the president is overrepresented in the losers. 
+As expected `seat_offset` $=0$ ie the current president, is vastly underrepresented in the game losers, but `seat_offset` $=1$ is also lower than the rest and `seat_offset` $=4$ ie the left-hand of the president is overrepresented in the losers.
 
 To see the winners distribution better, we remove the current president from the picture and only take into account the new presidents. 
 
 <figure>
-    <image src="/president-rl/New-presidents.png"  width="100%">
-    </image>
+    <img src="/president-rl/New-presidents.png" alt="New president frequency" width="100%">
+
     <figcaption> New presidents (game winners that were not presidents before) bar chart function of <code>seat_offset</code></figcaption>
 </figure>
 
 To check if the results are statistically significant I made a test against the null hypothesis (uniform distribution of winners over seat offsets, ie seat offsets dont matter).
 
 <figure>
-    <image src="/president-rl/New-presidents-stats.png"  width="100%">
-    </image>
+    <img src="/president-rl/New-presidents-stats.png" alt="New president statistics" width="100%">
+
     <figcaption> Statistical analysis of the bars from the previous plot with respect to the null hypothesis (uniform distribution over seat offsets)</figcaption>
 </figure>
 
@@ -543,8 +543,8 @@ As it can be seen `seat_offset` $=1$ is significantly higher than expected under
 I segment the bars by role in the next plot to show this.
 
 <figure>
-    <image src="/president-rl/New-presidents-roles.png"  width="100%">
-    </image>
+    <img src="/president-rl/New-presidents-roles.png" alt="New president role statistics" width="100%">
+
     <figcaption> Same new-presidents plot but now segmented by <code>current_role</code> (role before winning)</figcaption>
 </figure>
 
@@ -553,8 +553,8 @@ The set of winners that had `seat_offset` $=1$ appears to have a larger percenta
 The same statistical analysis from before can be done on the Scums plot to show that `seat_offset` $=1$ is significantly less likely to become scum and that `seat_offset` $=3$ and `seat_offset` $=4$ are significantly more likely.
 
 <figure>
-    <image src="/president-rl/Scums-stats.png"  width="100%">
-    </image>
+    <img src="/president-rl/Scums-stats.png" alt="Scum statistics" width="100%">
+
     <figcaption> Statistical analysis of the bars from the Scums plot with respect to the null hypothesis (uniform distribution over seat offsets)</figcaption>
 </figure>
 

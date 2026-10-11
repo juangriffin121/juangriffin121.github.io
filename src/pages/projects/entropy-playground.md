@@ -4,8 +4,6 @@ title: 'Entropy playground'
 description: 'A Rust particle simulator with configurable chemical reactions and atomic bonds, built to make thermodynamics something you can watch happen'
 tags: ["Rust", "Computational simulation", "Python"]
 ---
-# Entropy Playground
-
 *A Rust particle simulator with configurable chemical reactions and atomic bonds, built to make thermodynamics something you can watch happen.*
 
 [Repo →](https://github.com/juangriffin121/entropy_playground)
@@ -58,7 +56,7 @@ Stitched together, the two frame sequences play as one continuous animation that
 
 The following is an example of a simulation performed with this software with a tongue-in-cheek but *theoretically* possible configuration of atoms obtained from an SVG image. 
 
-<video src="/entropy/entropy.mp4" controls width="50%">
+<video src="/entropy/entropy.mp4" controls preload="metadata" width="50%">
   Your browser does not support the video tag.
 </video>
 
@@ -304,7 +302,7 @@ Bond-breaking reactions add a second, chemical flavor of the same idea: fusing t
 ## Results
 
 
-<video src="/entropy/entropy.mp4" controls width="50%">
+<video src="/entropy/entropy.mp4" controls preload="metadata" width="50%">
 
 Your browser does not support the video tag.
 
@@ -328,9 +326,9 @@ Thus, the entropy is high when the particles are spread relatively uniformly acr
 
 ### X position
 
-<image src="/entropy/x_position.png" controls width="100%">
+<img src="/entropy/x_position.png" alt="Entropy of particle x positions" width="100%">
 
-</image>
+
 
 The three panels show different views of the same quantity.
 
@@ -346,9 +344,9 @@ As the system approaches equilibrium, the $x$-position distribution becomes appr
 
 ### Y position
 
-<image src="/entropy/y_position.png" controls width="100%">
+<img src="/entropy/y_position.png" alt="Entropy of particle y positions" width="100%">
 
-</image>
+
 
 The same analysis is performed for the $y$-coordinate, but the result is qualitatively different because gravity acts in this direction.
 

@@ -14,7 +14,7 @@
 }
 
 /* -----------------------
-   Dark mode
+   Light mode
 ------------------------ */
 :root[data-theme="light"] {
   --bg: #fafafa;
@@ -22,30 +22,6 @@
   --muted: #555555;
   --border: #e5e5e5;
   --hover-bg: #f0f0f0;
-}
-
-/* -----------------------
-   Theme toggle
------------------------- */
-.theme-toggle {
-  background: none;
-  border: 1px solid transparent;
-  padding: 0.4rem;
-  border-radius: var(--radius);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.theme-toggle:hover {
-  background-color: var(--hover-bg);
-  border-color: var(--border);
-}
-
-.theme-toggle svg {
-  width: 18px;
-  height: 18px;
-  stroke: currentColor;
 }
 
 /* -----------------------
@@ -73,11 +49,7 @@ body {
   height: 100%;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
+body { min-height: 100vh; }
 
 /* -----------------------
    Layout
@@ -88,9 +60,19 @@ main {
   margin: 0 auto;
   padding: 2rem 1.25rem;
 
-  flex: 1;
-  overflow-y: auto;
 }
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 10;
+  padding: 0.5rem 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.skip-link:focus { top: 1rem; }
 
 /* -----------------------
    Links & interactions
@@ -148,9 +130,6 @@ main > h1 {
 /* -----------------------
    Markdown / Prose
 ------------------------ */
-.prose {
-}
-
 .prose p {
   margin: 1.2rem 0;
 }
@@ -231,18 +210,15 @@ main > h1 {
 /* -----------------------
    Navigation
 ------------------------ */
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 0.5rem;
-  padding: 0;
-  margin: 0;
-}
-
 nav a {
   padding: 0.45rem 0.75rem;
   border-radius: var(--radius);
   border: 1px solid transparent;
+}
+
+nav {
+  display: flex;
+  gap: 0.5rem;
 }
 
 nav a:hover,
@@ -265,7 +241,7 @@ nav a[aria-current="page"] {
     justify-content: space-between;
   }
 
-  nav ul {
+  nav {
     gap: 0.25rem;
   }
 }

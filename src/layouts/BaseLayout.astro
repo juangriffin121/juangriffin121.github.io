@@ -1,11 +1,12 @@
 ---
 import '../styles/global.css'
-const {pageTitle} = Astro.props
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+const { pageTitle, description = 'Juan Griffin — biotechnology graduate and self-taught machine learning and systems programmer.' } = Astro.props
+const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : Astro.url
 ---
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -14,8 +15,17 @@ import Footer from '../components/Footer.astro'
       href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css"
     />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} >
-    <title>{pageTitle}</title>
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={`${pageTitle} | Juan Griffin`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={`${pageTitle} | Juan Griffin`} />
+    <meta name="twitter:description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <title>{pageTitle} | Juan Griffin</title>
 
     <script is:inline>
       (function() {
@@ -25,24 +35,16 @@ import Footer from '../components/Footer.astro'
       })();
     </script>
     
-    <!-- Preserve theme during View Transitions -->
-    <script is:inline>
-      document.addEventListener('astro:before-swap', (e) => {
-        const theme = document.documentElement.getAttribute('data-theme');
-        e.newDocument.documentElement.setAttribute('data-theme', theme);
-      });
-    </script>
-
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <Header />
 
-    <main>
+    <main id="main-content">
       <h1>{pageTitle}</h1>
       <slot />
     </main>
 
-    <!-- <Footer /> -->
+    <Footer />
   </body>
 </html>
-

@@ -1,28 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import { slugifyTag } from '../../utils/tags'
 
-const pageTitle = "My projects"
+const pageTitle = "Projects"
 const allProjects = Object.values(import.meta.glob('./*.md', {eager: true}));
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <p>Heres where ill post my projects</p>
+  <p class="intro">Selected projects in machine learning, simulation, systems programming, and data analysis.</p>
   <div class="projects">
     {allProjects.map((project: any) => (
       <article class="project-card">
+        <a class="card-link" href={project.url}>
         <h2>
-          <a href={project.url}>{project.frontmatter.title}</a>
+          {project.frontmatter.title}
         </h2>
 
         <p class="project-description">
           {project.frontmatter.description}
         </p>
+        </a>
 
         <ul class="project-tags">
           {project.frontmatter.tags.map((tag: string) => (
-            <li>
-              <a href={`/tags/${tag}`}>{tag}</a>
-            </li>
+            <li><a href={`/tags/${slugifyTag(tag)}`}>{tag}</a></li>
           ))}
         </ul>
       </article>
@@ -44,6 +45,7 @@ const allProjects = Object.values(import.meta.glob('./*.md', {eager: true}));
      Project card
   ------------------------ */
   .project-card {
+    position: relative;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.25rem 1.5rem;
@@ -51,6 +53,8 @@ const allProjects = Object.values(import.meta.glob('./*.md', {eager: true}));
       background-color var(--transition),
       border-color var(--transition);
   }
+
+  .intro { color: var(--muted); }
 
   .project-card:hover {
     background-color: var(--hover-bg);
@@ -65,9 +69,15 @@ const allProjects = Object.values(import.meta.glob('./*.md', {eager: true}));
     font-size: 1.25rem;
   }
 
-  .project-card h2 a {
-    display: inline-block;
+  .card-link { display: block; }
+
+  .card-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
   }
+
+  .project-tags { position: relative; }
 
   /* -----------------------
      Description

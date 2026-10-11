@@ -8,14 +8,13 @@ tags: ["Python", "C", "Computational simulation"]
 *Code: [Data-Model-PID-Sim](https://github.com/juangriffin121/Data-Model-PID-Sim)*
 
 <div style="display: flex; gap: 10px; align-items: center;">
-    <video src="/inverted-pendulum/real_system.mp4" controls width="50%" height="50%">
+    <video src="/inverted-pendulum/real_system.mp4" controls preload="metadata" width="50%" height="50%">
     </video>
-    <video src="/inverted-pendulum/full_simulation.mp4" controls width="50%">
+    <video src="/inverted-pendulum/full_simulation.mp4" controls preload="metadata" width="50%">
     </video>
 </div>
 
 <!--![Placeholder: hero shot of the physical setup](./images/hero.png)
-<!-- TODO: add a photo/gif of the printer-carriage pendulum rig -->
 
 ## Introduction
 
@@ -47,8 +46,8 @@ The project is organized around three stages:
 
 The recorded data on which the simulation is then built upon is the pendulum released from 60° and left to swing/decay under gravity and friction, no control input, to isolate the *plant* dynamics before any controller is involved.
 
-<image src="/inverted-pendulum/data.png" controls width="100%">
-</image>
+<img src="/inverted-pendulum/data.png" alt="Measured pendulum data" width="100%">
+
 
 The Arduino logs semicolon-delimited lines like:
 
@@ -116,8 +115,8 @@ $$
 \frac {d^2 \theta} {dt^2} = -\; \kappa\sin\theta \;-\; \mu\,\frac {d \theta} {dt} \;-\; \gamma\,\mathrm{sign}(\frac {d \theta}{dt})
 $$
 
-<image src="/inverted-pendulum/fitted_model.png" controls width="100%">
-</image>
+<img src="/inverted-pendulum/fitted_model.png" alt="Fitted pendulum model" width="100%">
+
 
 Luckily the constant $\kappa$ (which from the Lagrangian derivation is $mlg/I$ where $I$, m and l are the pendulum's moment of inertia, mass and length respectively) appears in the acceleration term $\kappa /g a \cos(\theta)$ and the gravitational fall $\kappa \sin(\theta)$ so we didnt have to fit a separate parameter for which we would need more data with the car included.
 
@@ -263,8 +262,8 @@ maximum recoverable deviation ≈ 6.0 degrees (≈ 12 encoder lines)
 
 Running the full discrete-event simulation confirms this almost exactly: starting the pendulum at encoder count 353 (12 lines from equilibrium at 365) the controller recovers it; starting at 352 (13 lines off) it falls. 
 
-<image src="/inverted-pendulum/max-dev.png" controls width="100%">
-</image>
+<img src="/inverted-pendulum/max-dev.png" alt="Maximum recoverable deviation" width="100%">
+
 
 With respect to the gains: 
 - The proportional gain is the simplest and essential to the system, we found that a high enough value is able on its own to get the pendulum up, but not enough to mantain it there.  
@@ -272,11 +271,11 @@ With respect to the gains:
 - For the integral, we found it essential to keep the pendulum up, the proportional gain was able to succesfully get the pendulum up, but due to the 1 encoder line resolution, it has a dead zone over which it cant respond, but the pendulum isnt in equilibrium so it starts falling again, whenever it passes the encoder, the pendulum pushes it back up, but the physics of the system make it conserve the angular velocity it had while falling, meaning the system is gaining energy everytime the car pushes the pendulum back up, leading to an eventual fall once enough energy accumulates. Another problem that arises when no integral is used is due to the error always staing on one side, the corrections done by the car are always to one side aswell, meaning the car would reach the limit of the printer track and the pendulum falls.
 <figure>
     <figcaption>The system without an integral gain.</figcaption>
-    <image src="/inverted-pendulum/without-integral.png" controls width="100%">
-    </image>
+    <img src="/inverted-pendulum/without-integral.png" alt="Controller without integral gain" width="100%">
+
     <figcaption>The system with an integral gain.</figcaption>
-    <image src="/inverted-pendulum/with-integral.png" controls width="100%">
-    </image>
+    <img src="/inverted-pendulum/with-integral.png" alt="Controller with integral gain" width="100%">
+
 </figure>
 
 The conclusion drawn from combining the closed-form bound with the simulation: **stepper power and the printer's finite track length (the car running off the end) are the binding constraints on this rig**, not sensor resolution or control-loop latency, which turned out to be comfortably fast relative to the pendulum's dynamics. This information helped us make smarter decisions to get the result we wanted, we created two separate systems (swing_up and PID) and we changed a previous stepper motor's driver which only gave us half the power meaning the maximum deviation was around 2.5 degrees giving a very small safe zone for the PID.

@@ -4,8 +4,6 @@ title: 'Digit recognizer from scratch'
 description: 'Python based neural network library built from scratch used to create a digit recognizer trained on the MNIST dataset'
 tags: ["Python", "Machine learning"]
 ---
-# Introduction 
-
 This project is a digit recognizer built entirely from scratch in Python, without relying on high-level machine learning frameworks like TensorFlow or PyTorch. The goal of this project was not just to achieve good accuracy on the MNIST dataset, but to deeply understand how neural networks work under the hood: forward propagation, backpropagation, gradient descent, and the practical challenges that come with training models.
 
 To accomplish this I built a small neural network library that handles layers, activations, loss functions, and training loops, and then used it to train a classifier capable of recognizing handwritten digits from the MNIST dataset. 
@@ -194,7 +192,7 @@ Models are saved as pickle files and can be reloaded either for inference on use
 ## Results
 
 <figure>
-    <video src="/digit-recognizer/Demonstration.mp4" controls width="100%">
+    <video src="/digit-recognizer/Demonstration.mp4" controls preload="metadata" width="100%">
       Your browser does not support the video tag.
     </video>
     <figcaption> Example of the MS paint testing console workflow</figcaption>
@@ -255,8 +253,8 @@ W \cdot \vec v = \begin{pmatrix}
 $$
 
 <figure>
-    <image src="/digit-recognizer/pesos_column.png" width="20%">
-    </image>
+    <img src="/digit-recognizer/pesos_column.png" alt="Visualization of model weights" width="20%">
+
     <figcaption> Weights of a trained linear model plotted as a list of images </figcaption>
 </figure>
 
@@ -273,4 +271,3 @@ A few of the issues this implementation doesnt handle well are:
 ## Repository
 Link to the source code and instructions on how to run it.
 The source code for this project can be found in the following [github repo](https://github.com/juangriffin121/Digit_recognizer).
-
