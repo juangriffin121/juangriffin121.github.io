@@ -14,8 +14,6 @@ tags: ["Python", "C", "Computational simulation"]
     </video>
 </div>
 
-<!--![Placeholder: hero shot of the physical setup](./images/hero.png)
-
 ## Introduction
 
 This project builds and simulates a **control system for an inverted pendulum**, where the pivot point is moved by the carriage mechanism ("the car") salvaged from an old paper printer — the same lead-screw and stepper-motor assembly that normally drags a print head across a page. An Arduino reads the pendulum's angle from a 3D-printed rotary encoder and commands the stepper motor to shuttle the carriage back and forth, using the resulting inertial kick to keep the pendulum balanced on end.
