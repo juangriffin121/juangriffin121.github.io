@@ -2,9 +2,8 @@
 import BaseLayout from "../../layouts/BaseLayout.astro"
 import { slugifyTag } from "../../utils/tags"
 
-const allProjects = Object.values(import.meta.glob('../projects/*.md', {eager: true}));
-
 export async function getStaticPaths() {
+  const allProjects = Object.values(import.meta.glob('../projects/*.md', {eager: true}));
   const uniqueTags = [...new Set(allProjects.map((p: any) => p.frontmatter.tags).flat())]; /* ... expands (like *array in python) new Set creates a set, Set(...) alone doesnt work*/ 
 
   return uniqueTags.map((tag) => {
@@ -12,38 +11,39 @@ export async function getStaticPaths() {
 
     return {    
       params: {tag: slugifyTag(tag)},
-      props: {projects: filteredProjects},
+      props: { projects: filteredProjects, tag },
     }
   }) 
 };
 
-const { tag: tagSlug } = Astro.params;
-const { projects } = Astro.props;
-const tag = allProjects
-  .flatMap((project: any) => project.frontmatter.tags)
-  .find((value: string) => slugifyTag(value) === tagSlug) ?? tagSlug;
+const { projects, tag } = Astro.props;
 
 // try to load a skill md if it exists
 const skillModules = import.meta.glob('./content/*.md', { eager: true });
 const skillDoc = skillModules[`./content/${tag}.md`];
+const description = skillDoc?.frontmatter?.description ?? `Projects where I used ${tag}.`;
 ---
 
-<BaseLayout pageTitle={tag}>
+<BaseLayout pageTitle={tag} description={description}>
   {skillDoc ? (
-    <article class="prose">
-      <skillDoc.Content />
-    </article>
+    <>
+      <p class="skill-description">{description}</p>
+      <article class="prose">
+        <skillDoc.Content />
+      </article>
+    </>
   ) : (
     <p class="muted">
       Projects where I used <strong>{tag}</strong>.
     </p>
   )}
 
-  <div class="tagged-projects">
+  <h2>Projects using this skill</h2>
+  <ul class="tagged-projects">
     {projects.map((project: any) => (
-      <a href={project.url}>{project.frontmatter.title}</a>
+      <li><a href={project.url}>{project.frontmatter.title}</a></li>
     ))}
-  </div>
+  </ul>
 </BaseLayout>
 
 <style>
@@ -53,6 +53,12 @@ const skillDoc = skillModules[`./content/${tag}.md`];
     gap: 0.5rem;
     padding: 0;
     margin: 0;
+    flex-wrap: wrap;
+  }
+
+  .skill-description {
+    color: var(--muted);
+    font-size: 1.1rem;
   }
 
   .tagged-projects a {

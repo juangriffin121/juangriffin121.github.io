@@ -37,6 +37,7 @@ const tagModules = import.meta.glob('./content/*.md', { eager: true });
      Project card
   ------------------------ */
   .tag-card {
+    position: relative;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.25rem 1.5rem;
@@ -60,6 +61,12 @@ const tagModules = import.meta.glob('./content/*.md', { eager: true });
 
   .tag-card h2 a {
     display: inline-block;
+  }
+
+  .tag-card h2 a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
   }
 
   /* -----------------------

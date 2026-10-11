@@ -20,12 +20,23 @@ import Social from './Social.astro'
 
 <style>
   header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
     display: flex;
+    min-height: 58px;
+    background-color: var(--bg);
     border-bottom: 1px solid var(--border);
     flex-shrink: 0;
 
     align-items: center;
     justify-content: space-between;
+  }
+
+  :global(body) {
+    padding-top: 58px;
   }
 
   .header-inner {
