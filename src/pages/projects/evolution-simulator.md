@@ -222,21 +222,18 @@ To find interesting seeds which can show signs of learning, i implemented a chea
 
 <figure>
     <img src="/evolution/seed12.png" alt="Blobworld run with seed 12" width="100%">
-
     <figcaption>Population counts and total energy per species for the simulation shown at the begining.</figcaption>
 </figure>
 
 
 <figure>
     <img src="/evolution/seed2.png" alt="Blobworld run with seed 2" width="100%">
-
     <figcaption>Population counts and total energy per species for another interesting run, multiple predator-prey cycles.</figcaption>
 </figure>
 
 
 <figure>
     <img src="/evolution/all_runs.png" alt="Population across all Blobworld runs" width="100%">
-
     <figcaption>Accumulated graphs from 20 runs of the simulation from 20 different seeds.</figcaption>
 </figure>
 

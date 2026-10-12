@@ -209,3 +209,5 @@ The current version focuses on Politics markets and simulated positions. Planned
 ## Closing
 
 Polymarket Prediction Tally combines an external data source, a local data model, an interactive interface, and automated evaluation into one small but complete application. Its main purpose is both practical and educational: it provides a structured way to test predictions about real events while demonstrating how multiple software layers work together in a maintainable Python project.
+
+*Code and full implementation: [github.com/juangriffin121/polymarket-predictions-tally](https://github.com/juangriffin121/polymarket-predictions-tally)*

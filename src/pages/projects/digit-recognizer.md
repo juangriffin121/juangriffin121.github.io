@@ -254,8 +254,8 @@ $$
 
 <figure>
     <img src="/digit-recognizer/pesos_column.png" alt="Visualization of model weights" width="20%">
-
     <figcaption> Weights of a trained linear model plotted as a list of images </figcaption>
+
 </figure>
 
 The effect of the weights is clearest in the weights for the 0 digit, we can clearly see high positive values forming a circle and negative values inside the circle, so an image with pixels forming a circle would highly match the weight, whereas an image with its center painted would have a much smaller dot product.

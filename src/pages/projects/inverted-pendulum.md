@@ -271,8 +271,12 @@ With respect to the gains:
     <figcaption>The system without an integral gain.</figcaption>
     <img src="/inverted-pendulum/without-integral.png" alt="Controller without integral gain" width="100%">
 
+</figure>
+
+<figure>
     <figcaption>The system with an integral gain.</figcaption>
     <img src="/inverted-pendulum/with-integral.png" alt="Controller with integral gain" width="100%">
+
 
 </figure>
 

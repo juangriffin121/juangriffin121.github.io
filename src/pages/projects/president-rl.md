@@ -398,15 +398,14 @@ Without the card exchange, all agent types plateau at an average reward of about
 
 <figure>
     <img src="/president-rl/spaghetti_curves.png" alt="Training curves" width="100%">
-
     <figcaption>Training curves and checkpoint tests for the four agent families without exchange</figcaption>
+
 </figure>
 
 With the exchange, they reach about +1.6. Agents first train without exchange, and the exchange is switched on afterwards, which makes it easier for them to learn the basics first.
 
 <figure>
     <img src="/president-rl/spaghetti_curves_all_not_frozen.png" alt="Training curves without frozen agents" width="100%">
-
     <figcaption>Training curves and checkpoint tests for the four agent families with exchange</figcaption>
 </figure>
 
@@ -414,7 +413,6 @@ The number +1.6 at which the agents plateau needs some care: the exchange is a p
 
 <figure>
     <img src="/president-rl/spaghetti_curves_all_frozen.png" alt="Training curves with frozen agents" width="100%">
-
     <figcaption>Training curves and checkpoint tests for the four agent families with exchange, freezing after turning exchange on</figcaption>
 </figure>
 
@@ -477,7 +475,6 @@ Its worth noting the absence of a mean performance value for `seat_offset` $=0$ 
 
 <figure>
     <img src="/president-rl/Performance-Matrix.png" alt="Performance matrix" width="100%">
-
     <figcaption>Mean performance plotted as a function of <code>seat_offset</code> and <code>current_role_value</code></figcaption>
 </figure>
 
@@ -504,7 +501,6 @@ To see the distribution of winners of games depending on the `seat_offset`, I pl
 
 <figure>
     <img src="/president-rl/Presidents.png" alt="President role frequency" width="100%">
-
     <figcaption>  Presidents (game winners) bar chart function of <code>seat_offset</code></figcaption>
 </figure>
 
@@ -514,7 +510,6 @@ We also plot the distribution of game losers.
 
 <figure>
     <img src="/president-rl/Scums.png" alt="Scum role frequency" width="100%">
-
     <figcaption>  Scums (game losers) bar chart function of <code>seat_offset</code></figcaption>
 </figure>
 
@@ -524,7 +519,6 @@ To see the winners distribution better, we remove the current president from the
 
 <figure>
     <img src="/president-rl/New-presidents.png" alt="New president frequency" width="100%">
-
     <figcaption> New presidents (game winners that were not presidents before) bar chart function of <code>seat_offset</code></figcaption>
 </figure>
 
@@ -532,7 +526,6 @@ To check if the results are statistically significant I made a test against the 
 
 <figure>
     <img src="/president-rl/New-presidents-stats.png" alt="New president statistics" width="100%">
-
     <figcaption> Statistical analysis of the bars from the previous plot with respect to the null hypothesis (uniform distribution over seat offsets)</figcaption>
 </figure>
 
@@ -544,7 +537,6 @@ I segment the bars by role in the next plot to show this.
 
 <figure>
     <img src="/president-rl/New-presidents-roles.png" alt="New president role statistics" width="100%">
-
     <figcaption> Same new-presidents plot but now segmented by <code>current_role</code> (role before winning)</figcaption>
 </figure>
 
@@ -554,7 +546,6 @@ The same statistical analysis from before can be done on the Scums plot to show 
 
 <figure>
     <img src="/president-rl/Scums-stats.png" alt="Scum statistics" width="100%">
-
     <figcaption> Statistical analysis of the bars from the Scums plot with respect to the null hypothesis (uniform distribution over seat offsets)</figcaption>
 </figure>
 
