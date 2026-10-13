@@ -12,6 +12,12 @@ The project also includes a simulated betting system. Users can buy and sell Yes
 
 The application is intentionally designed as a personal analytics and learning tool. It does not execute trades or facilitate real-money gambling.
 
+<figure>
+    <img src="/polytally/polytally-demo.gif" controls preload="metadata" width="100%">
+    </img>
+    <figcaption>Demo asciinema from the CLI(the open markets are mocks because since March 2026, polymarket was banned in Argentina and access to the Gamma market api was lost)</figcaption>
+</figure>
+
 ## Motivation
 
 This project started as an exercise in building a larger, end-to-end application rather than a standalone script. I wanted to practice connecting several parts of a software system:
@@ -212,6 +218,9 @@ Polymarket Prediction Tally combines an external data source, a local data model
 
 ## Disclaimer
 
-Polymarket is currently (as of October 2026) banned in many countries including my country, Argentina which means the API I used for this project no longer works for me and wont work for anyone in a country where it's banned without using a VPN, even though this project doesnt facilitate real trading its source of markets and resolution is now blocked. Furthermore, since I was no longer able to use the project and didnt want to use a VPN for it, I stopped maintaining it which means the API could have made changes since which could break the project.  
+Polymarket is currently (as of October 2026) banned in many countries including my country, Argentina which means the API I used for this project no longer works for me and wont work for anyone in a country where it's banned without using a VPN, even though this project doesnt facilitate real trading its source of markets and resolution is now blocked, the asciinema used for the demo of this project was done with mock markets because of this. 
+
+Furthermore, since I was no longer able to use the project and didnt want to use a VPN for it, I stopped maintaining it which means the API could have made changes since which could break the project.  
+
 
 *Code and full implementation: [github.com/juangriffin121/polymarket-predictions-tally](https://github.com/juangriffin121/polymarket-predictions-tally)*
