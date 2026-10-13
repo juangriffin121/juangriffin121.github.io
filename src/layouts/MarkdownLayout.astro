@@ -3,7 +3,11 @@ import BaseLayout from "../layouts/BaseLayout.astro"
 import { slugifyTag } from "../utils/tags"
 const { frontmatter } = Astro.props;
 ---
-<BaseLayout pageTitle={frontmatter.title} description={frontmatter.description}>
+<BaseLayout
+  pageTitle={frontmatter.title}
+  description={frontmatter.description}
+  image={frontmatter.thumbnail}
+>
   <div class="project-tags">
     {frontmatter.tags.map((tag) => (
       <a href={`/tags/${slugifyTag(tag)}`}>{tag}</a>

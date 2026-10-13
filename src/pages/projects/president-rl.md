@@ -2,6 +2,7 @@
 layout: ../../layouts/MarkdownLayout.astro
 title: 'President: Reinforcement Learning from Scratch'
 description: 'Game dynamics analysis with reinforcement-learning agents as players'
+thumbnail: '/thumbs/president-rl.jpg'
 tags: ["Python",  "Reinforcement learning"]
 ---
 

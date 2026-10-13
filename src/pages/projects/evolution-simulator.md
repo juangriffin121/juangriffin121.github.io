@@ -2,6 +2,7 @@
 layout: ../../layouts/MarkdownLayout.astro
 title: 'Blobworld: Evolution simulator'
 description: 'Evolution simulation in Rust'
+thumbnail: '/thumbs/evolution-simulator.jpg'
 tags: ["Rust", "Computational simulation"]
 ---
 *A from-scratch artificial life simulation in Rust, where blobs hunt, flee, and evolve.*

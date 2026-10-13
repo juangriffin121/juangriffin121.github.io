@@ -2,6 +2,7 @@
 layout: ../../layouts/MarkdownLayout.astro
 title: 'Polymarket prediction tally'
 description: 'CLI tool for keeping track of polymarket predictions'
+thumbnail: '/thumbs/polytally.jpg'
 tags: ["Python", "SQL"]
 ---
 ## Introduction

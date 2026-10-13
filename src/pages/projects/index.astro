@@ -11,21 +11,34 @@ const allProjects = Object.values(import.meta.glob('./*.md', {eager: true}));
   <div class="projects">
     {allProjects.map((project: any) => (
       <article class="project-card">
-        <a class="card-link" href={project.url}>
-        <h2>
-          {project.frontmatter.title}
-        </h2>
+        {project.frontmatter.thumbnail && (
+          <img
+            class="thumb"
+            src={project.frontmatter.thumbnail}
+            alt=""
+            width="1200"
+            height="675"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+        <div class="project-body">
+          <a class="card-link" href={project.url}>
+            <h2>
+              {project.frontmatter.title}
+            </h2>
 
-        <p class="project-description">
-          {project.frontmatter.description}
-        </p>
-        </a>
+            <p class="project-description">
+              {project.frontmatter.description}
+            </p>
+          </a>
 
-        <ul class="project-tags">
-          {project.frontmatter.tags.map((tag: string) => (
-            <li><a href={`/tags/${slugifyTag(tag)}`}>{tag}</a></li>
-          ))}
-        </ul>
+          <ul class="project-tags">
+            {project.frontmatter.tags.map((tag: string) => (
+              <li><a href={`/tags/${slugifyTag(tag)}`}>{tag}</a></li>
+            ))}
+          </ul>
+        </div>
       </article>
     ))}
   </div>
@@ -46,9 +59,13 @@ const allProjects = Object.values(import.meta.glob('./*.md', {eager: true}));
   ------------------------ */
   .project-card {
     position: relative;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 1.5rem;
+    align-items: center;
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 1.5rem 1rem 1rem;
     transition:
       background-color var(--transition),
       border-color var(--transition);
@@ -64,6 +81,18 @@ const allProjects = Object.values(import.meta.glob('./*.md', {eager: true}));
   /* -----------------------
      Project title
   ------------------------ */
+  .thumb {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .project-body { min-width: 0; }
+
   .project-card h2 {
     margin: 0 0 0.5rem 0;
     font-size: 1.25rem;
@@ -94,8 +123,17 @@ const allProjects = Object.values(import.meta.glob('./*.md', {eager: true}));
     list-style: none;
     display: flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
     padding: 0;
     margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .project-card {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
   }
 
   .project-tags a {

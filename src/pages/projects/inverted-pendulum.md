@@ -2,6 +2,7 @@
 layout: ../../layouts/MarkdownLayout.astro
 title: 'Inverted pendulum'
 description: 'Inverted pendulum control system modeling and simulation'
+thumbnail: '/thumbs/inverted-pendulum.jpg'
 tags: ["Python", "C", "Computational simulation"]
 ---
 

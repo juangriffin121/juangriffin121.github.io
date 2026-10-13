@@ -2,6 +2,7 @@
 layout: ../../layouts/MarkdownLayout.astro
 title: 'Entropy playground'
 description: 'A Rust particle simulator with configurable chemical reactions and atomic bonds, built to make thermodynamics something you can watch happen'
+thumbnail: '/thumbs/entropy-playground.jpg'
 tags: ["Rust", "Computational simulation", "Python"]
 ---
 *A Rust particle simulator with configurable chemical reactions and atomic bonds, built to make thermodynamics something you can watch happen.*
