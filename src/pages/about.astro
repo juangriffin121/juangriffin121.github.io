@@ -4,7 +4,29 @@ const pageTitle = "About me"
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <p>I studied Biotechnology and Molecular Biology in university and taught myself machine learning and systems programming.</p>
-  <p>My work focuses on understanding and showing how things work underneath the abstractions: handwritten neural networks, physical simulations, reinforcement learning, and control systems.</p>
-  <p>You can find me on <a href="https://github.com/juangriffin121">GitHub</a> and <a href="https://www.linkedin.com/in/juan-griffin-b2456026b/">LinkedIn</a>.</p>
+  <p class="lede">I’m a biotechnology and molecular biology graduate who builds machine-learning and systems projects from first principles.</p>
+  <p>My work is driven by a desire to understand what happens underneath the abstractions: handwritten neural networks, physical simulations, reinforcement learning, control systems, and small developer tools.</p>
+  <p>I’m especially interested in projects that connect theory to something observable — a model learning, a controller recovering a pendulum, or a simulated world developing its own behavior.</p>
+  <p class="contact-links">
+    You can see the code on <a href="https://github.com/juangriffin121">GitHub</a>, connect with me on <a href="https://www.linkedin.com/in/juan-griffin-b2456026b/">LinkedIn</a>, or email me at <a href="mailto:griffinjuan42@gmail.com">griffinjuan42@gmail.com</a>.
+  </p>
 </BaseLayout>
+
+<style>
+  .lede {
+    font-size: 1.25rem;
+    line-height: 1.45;
+  }
+
+  .contact-links a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    text-decoration-thickness: 1px;
+  }
+
+  .contact-links a:hover,
+  .contact-links a:focus-visible {
+    color: var(--fg);
+  }
+</style>

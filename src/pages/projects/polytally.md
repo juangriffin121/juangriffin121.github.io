@@ -210,4 +210,8 @@ The current version focuses on Politics markets and simulated positions. Planned
 
 Polymarket Prediction Tally combines an external data source, a local data model, an interactive interface, and automated evaluation into one small but complete application. Its main purpose is both practical and educational: it provides a structured way to test predictions about real events while demonstrating how multiple software layers work together in a maintainable Python project.
 
+## Disclaimer
+
+Polymarket is currently (as of October 2026) banned in many countries including my country, Argentina which means the API I used for this project no longer works for me and wont work for anyone in a country where it's banned without using a VPN, even though this project doesnt facilitate real trading its source of markets and resolution is now blocked. Furthermore, since I was no longer able to use the project and didnt want to use a VPN for it, I stopped maintaining it which means the API could have made changes since which could break the project.  
+
 *Code and full implementation: [github.com/juangriffin121/polymarket-predictions-tally](https://github.com/juangriffin121/polymarket-predictions-tally)*

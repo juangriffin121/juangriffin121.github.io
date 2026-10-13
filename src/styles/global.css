@@ -134,6 +134,25 @@ main > h1 {
   margin: 1.2rem 0;
 }
 
+.prose img,
+.prose video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  border-radius: var(--radius);
+}
+
+.prose video {
+  background: #000;
+}
+
+.prose h2 {
+  margin-top: 3rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--border);
+}
+
 .prose a {
   color: var(--accent)
 }
@@ -232,17 +251,35 @@ nav a[aria-current="page"] {
 }
 
 @media (max-width: 600px) {
+  header {
+    padding: 0 0.35rem;
+  }
+
   .header-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    min-width: 0;
+    overflow-x: auto;
+    padding: 0.65rem 0.25rem;
+    scrollbar-width: none;
+  }
+
+  .header-inner::-webkit-scrollbar {
+    display: none;
   }
 
   nav {
-    gap: 0.25rem;
+    width: max-content;
+    flex-wrap: nowrap;
+    gap: 0.15rem;
+  }
+
+  nav a {
+    padding-inline: 0.55rem;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 

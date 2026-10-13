@@ -4,23 +4,63 @@ const pageTitle = "Tools"
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <p class="intro">The informatic tools I use to write, organize, and run projects.</p>
+  <p class="intro">The tools I use to research, build, and understand projects.</p>
 
-  <h3 class="tool"><a href="https://obsidian.com">Obsidian<span class="external-link-icon" aria-hidden="true">↗</span></a></h3>
-  <p>A local-first knowledge base for notes, research, and project planning.</p>
-  <h3 class="tool"><a href="https://linuxmint.com">Linux<span class="external-link-icon" aria-hidden="true">↗</span></a></h3>
-  <p>My Linux desktop environment and the platform where I do most of my development.</p>
-  <h3 class="tool"><a href="https://neovim.io/">Neovim<span class="external-link-icon" aria-hidden="true">↗</span></a></h3>
-  <p>A fast, keyboard-driven editor for code and configuration.</p>
-  <h3 class="tool"><a href="https://github.com/tmux/tmux/wiki">Tmux<span class="external-link-icon" aria-hidden="true">↗</span></a></h3>
-  <p>A terminal multiplexer for keeping long-running sessions organized.</p>
-  <h3 class="tool"><a href="https://i3wm.org/">i3wm <span class="external-link-icon" aria-hidden="true">↗</span></a></h3>
-  <p>A lightweight tiling window manager that keeps the desktop focused and predictable.</p>
-  <h3 class="tool"><a href="https://yazi-rs.github.io/">Yazi <span class="external-link-icon" aria-hidden="true">↗</span></a></h3>
-  <p>A fast, keyboard-driven terminal file manager</p>
+  <div class="tool-list">
+    <article class="tool-card">
+      <h2 class="tool"><a href="https://obsidian.md">Obsidian</a></h2>
+      <p>A local-first knowledge base for notes, research, and project planning.</p>
+    </article>
+    <article class="tool-card">
+      <h2 class="tool"><a href="https://linuxmint.com">Linux</a></h2>
+      <p>The desktop environment and development platform I use for most of my work.</p>
+    </article>
+    <article class="tool-card">
+      <h2 class="tool"><a href="https://neovim.io/">Neovim</a></h2>
+      <p>A fast, keyboard-driven editor for code and configuration.</p>
+    </article>
+    <article class="tool-card">
+      <h2 class="tool"><a href="https://github.com/tmux/tmux/wiki">Tmux</a></h2>
+      <p>A terminal multiplexer for keeping long-running sessions organized.</p>
+    </article>
+    <article class="tool-card">
+      <h2 class="tool"><a href="https://i3wm.org/">i3wm</a></h2>
+      <p>A lightweight tiling window manager that keeps the desktop focused and predictable.</p>
+    </article>
+    <article class="tool-card">
+      <h2 class="tool"><a href="https://yazi-rs.github.io/">Yazi</a></h2>
+      <p>A fast, keyboard-driven terminal file manager.</p>
+    </article>
+  </div>
 </BaseLayout>
 
 <style>
+
+  .tool-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .tool-card {
+    position: relative;
+    padding: 1.25rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition:
+      background-color var(--transition),
+      border-color var(--transition);
+  }
+
+  .tool-card p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .tool {
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+  }
 
   .tool a {
     display: inline-flex;
@@ -28,9 +68,21 @@ const pageTitle = "Tools"
     transition: color 0.2s ease;
   }
 
+  /* Make the whole card activate the tool link. */
+  .tool a::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
   .tool a:hover {
-    color: var(--accent);
-    background-color: var(--bg);
+    color: inherit;
+    background-color: transparent;
+  }
+
+  .tool-card:hover {
+    border-color: var(--fg);
+    background-color: var(--hover-bg);
   }
 
   .external-link-icon {

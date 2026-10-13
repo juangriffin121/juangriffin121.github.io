@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
 title: 'Digit recognizer from scratch'
-description: 'Python based neural network library built from scratch used to create a digit recognizer trained on the MNIST dataset'
+description: 'A neural-network library built from scratch in Python, used to train a digit recognizer on MNIST'
 tags: ["Python", "Machine learning"]
 ---
 This project is a digit recognizer built entirely from scratch in Python, without relying on high-level machine learning frameworks like TensorFlow or PyTorch. The goal of this project was not just to achieve good accuracy on the MNIST dataset, but to deeply understand how neural networks work under the hood: forward propagation, backpropagation, gradient descent, and the practical challenges that come with training models.

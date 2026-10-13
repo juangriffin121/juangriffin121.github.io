@@ -7,7 +7,7 @@ const allProjects = Object.values(import.meta.glob('./*.md', {eager: true}));
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <p class="intro">Selected projects in machine learning, simulation, systems programming, and data analysis.</p>
+  <p class="intro">Selected projects in machine learning, simulation, systems programming, and data analysis. Each one is an attempt to understand a system by building a working version of it.</p>
   <div class="projects">
     {allProjects.map((project: any) => (
       <article class="project-card">
