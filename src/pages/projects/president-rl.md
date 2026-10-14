@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
-title: 'President: Reinforcement Learning from Scratch'
-description: 'Game dynamics analysis with reinforcement-learning agents as players'
+title: 'President: Reinforcement Learning'
+description: 'Hand-written NumPy reinforcement-learning agents (REINFORCE and actor-critic) play the card game President to test seat position dynamics'
 thumbnail: '/thumbs/president-rl.jpg'
 tags: ["Python",  "Reinforcement learning"]
 ---

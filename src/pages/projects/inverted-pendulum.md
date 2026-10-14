@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
 title: 'Inverted pendulum'
-description: 'Inverted pendulum control system modeling and simulation'
+description: 'A physics model fitted to real sensor data and a simulated PID controller for an inverted pendulum on a salvaged printer carriage to diagnose limits on the physical system'
 thumbnail: '/thumbs/inverted-pendulum.jpg'
 tags: ["Python", "C", "Computational simulation"]
 ---

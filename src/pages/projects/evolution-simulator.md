@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
 title: 'Blobworld: Evolution simulator'
-description: 'Evolution simulation in Rust'
+description: 'Predator and prey blobs with tiny neural networks evolve chasing and fleeing in a Rust artificial-life simulator, using mutation and selection instead of backpropagation'
 thumbnail: '/thumbs/evolution-simulator.jpg'
 tags: ["Rust", "Computational simulation"]
 ---

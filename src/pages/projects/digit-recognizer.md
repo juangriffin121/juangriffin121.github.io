@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
 title: 'Digit recognizer from scratch'
-description: 'A neural-network library built from scratch in Python, used to train a digit recognizer on MNIST'
+description: 'A neural-network library written from scratch in Python, used to train an MNIST digit classifier that can also read your own hand-drawn digits through a small CLI'
 thumbnail: '/thumbs/digit-recognizer.jpg'
 tags: ["Python", "Machine learning"]
 ---

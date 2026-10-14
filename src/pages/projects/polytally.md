@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
 title: 'Polymarket prediction tally'
-description: 'CLI tool for keeping track of polymarket predictions'
+description: 'A Python and SQLite command-line tool for logging predictions and simulated bets on Polymarket events, resolving them when markets resolve'
 thumbnail: '/thumbs/polytally.jpg'
 tags: ["Python", "SQL"]
 ---
@@ -208,10 +208,6 @@ Interactive behavior is tested by mocking Click prompts, while database tests us
 - Pytest
 - Platformdirs
 - TOML configuration
-
-## Current Scope and Future Improvements
-
-The current version focuses on Politics markets and simulated positions. Planned improvements include richer financial statistics, tracking the purchase price of positions for more accurate profit reporting, improved question removal behavior, fuzzy/fzf-based selection, and broader manual testing against live market updates.
 
 ## Closing
 
