@@ -31,7 +31,7 @@ This project used computational methods to study SLiMs in two settings where the
 
 ### 2. A candidate new motif in APP: YKFFE and AP4
 
-- Searched the literature-derived amyloid set for matches against all 318 ELM class patterns. Only APP matched.
+- **APP** the precursor protein to the peptide whose amyloid accumulation is responsible for Alzheimer's disease had some evidence of SLiMs not covered in ELM.
 - Found that the APP tail motif **YKFFE**, which binds the μ subunit of the AP4 adaptor complex at a non-canonical pocket, is not covered by any ELM class. I proposed the pattern `YX[FYL][FL]E` as a possible new TRG_ENDOCYTIC subclass, with **LAMP-2** as a candidate second instance.
 - Ran a co-evolution analysis (BLAST, Clustal Omega, Python). Across 1,621 APP homologs the motif is 98.1% conserved on average, and the AP4M1 binding pocket keeps the chemical character of its residues even where the residues vary.
 - The evidence was promising but not enough for a formal deposit, so the work stops at a well-supported candidate.
