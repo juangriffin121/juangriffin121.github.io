@@ -5,9 +5,9 @@ import { slugifyTag } from '../utils/tags'
 const pageTitle = "Juan Griffin"
 
 const featuredUrls = [
+  '/projects/thesis',
   '/projects/president-rl',
-  '/projects/digit-recognizer',
-  '/projects/evolution-simulator',
+  '/projects/entropy-playground',
 ]
 const allProjects = Object.values(import.meta.glob('./projects/*.md', { eager: true })) as any[]
 const featured = featuredUrls

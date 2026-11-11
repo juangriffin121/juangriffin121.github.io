@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownLayout.astro
 title: "Short Linear Motifs in Amyloidogenic and Immune-Response Proteins"
-description: "Bachelor's thesis in Biotechnology and Molecular Biology"
+description: "Bachelor's thesis in Biotechnology and Molecular Biology, with work curated into the ELM database and published in a co-authored paper."
 thumbnail: '/thumbs/thesis.png'
 tags: ["Bioinformatics", "Python"]
 ---

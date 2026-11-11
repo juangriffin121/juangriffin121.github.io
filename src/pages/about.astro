@@ -6,6 +6,7 @@ const pageTitle = "About me"
 <BaseLayout pageTitle={pageTitle}>
   <p class="lede">I’m a Biotechnology and Molecular Biology graduate who builds machine-learning and systems projects from first principles.</p>
   <p>My work is driven by a desire to understand what happens underneath the abstractions: handwritten neural networks, physical simulations, reinforcement learning, control systems, and small developer tools.</p>
+  <p>That habit started in the lab. My bachelor’s thesis, done in the Structural Bioinformatics Group at Universidad Nacional de Quilmes, studied short linear motifs in amyloid-forming and immune-response proteins using sequence, structure and statistical analysis. It ended with a new curated class in the ELM database, DOC_TBK1_STING_1, included in the 2024 update, and a co-authorship on the resulting paper. It also taught me to build a null model before trusting a pattern, and to be honest about how much a result actually shows. You can read more in the <a href="/projects/thesis">thesis write-up</a>.</p>
   <p>I’m especially interested in projects that connect theory to something observable — a model learning, a controller recovering a pendulum, or a simulated world developing its own behavior.</p>
   <p class="contact-links">
     You can see the code on <a href="https://github.com/juangriffin121">GitHub</a>, connect with me on <a href="https://www.linkedin.com/in/juan-griffin-b2456026b/">LinkedIn</a>, or email me at <a href="mailto:griffinjuan42@gmail.com">griffinjuan42@gmail.com</a>.
@@ -18,7 +19,8 @@ const pageTitle = "About me"
     line-height: 1.45;
   }
 
-  .contact-links a {
+  .contact-links a,
+  p a {
     color: var(--accent);
     text-decoration: underline;
     text-underline-offset: 0.18em;
@@ -26,7 +28,9 @@ const pageTitle = "About me"
   }
 
   .contact-links a:hover,
-  .contact-links a:focus-visible {
+  .contact-links a:focus-visible,
+  p a:hover,
+  p a:focus-visible {
     color: var(--fg);
   }
 </style>
